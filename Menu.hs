@@ -1,5 +1,11 @@
 #!/usr/bin/env runhaskell
 
+{-
+This code was written by cheater__ and published here:
+http://cheater.posterous.com/haskell-curses
+I am still waiting to get permision to republish it under the GPL...
+-}
+
 module Menu where
 import qualified Graphics.Vty as Vty
 
