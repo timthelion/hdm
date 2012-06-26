@@ -11,4 +11,3 @@ cabal-version: >= 1.2
 Executable hdm
  build-depends: vty
  Main-is: hdm.lhs
- other-modules : Menu
