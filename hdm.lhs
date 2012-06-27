@@ -161,5 +161,8 @@ Otherwise, we screem bloody murder, and print out a help message.
 > xinitrcdir <- xinitrcd
 > sessions' <- getDirectoryContents xinitrcdir
 > sessions <- return $ filter (\x -> not (((x == ".") || (x == "..")) || (x == "current"))) sessions'
-> session <- displayMenu sessions
-> loadSession session
+> maybeSession <- displayMenu sessions
+> case maybeSession of 
+>  Just session -> loadSession session
+>  Nothing -> do
+>   putStrLn "Goodbye."

@@ -1,5 +1,3 @@
-#!/usr/bin/env runhaskell
-
 {-
 This code was written by cheater__ and published here:
 http://cheater.posterous.com/haskell-curses
@@ -38,11 +36,12 @@ deallocate vt =
 -- frees Vty resouces
     Vty.shutdown vt
 
-handleKeyboard :: Vty.Key -> Int -> Int -> [String] -> Vty.Vty -> IO (Vty.Vty,Int)
+handleKeyboard :: Vty.Key -> Int -> Int -> [String] -> Vty.Vty -> IO (Vty.Vty,Maybe Int)
 handleKeyboard key position offset items vt = case key of
 -- handles keyboard input
-    Vty.KASCII 'q' -> return (vt,position)
-    Vty.KEnter -> return (vt,position)
+    Vty.KASCII 'q' -> return (vt,Nothing)
+    Vty.KEsc -> return (vt,Nothing)
+    Vty.KEnter -> return (vt,Just position)
     Vty.KASCII 'j' -> work (position + 1) offset items vt
     Vty.KDown -> work (position + 1) offset items vt
     Vty.KASCII 'k' -> work (position - 1) offset items vt
@@ -50,7 +49,7 @@ handleKeyboard key position offset items vt = case key of
     _ -> work position offset items vt
 	 
 
-work :: Int -> Int -> [String] -> Vty.Vty -> IO (Vty.Vty,Int)
+work :: Int -> Int -> [String] -> Vty.Vty -> IO (Vty.Vty,Maybe Int)
 work requestedPosition offset items vt = do
 -- displays items 
     let position = max 0 (min requestedPosition (length items - 1))
@@ -71,19 +70,21 @@ work requestedPosition offset items vt = do
     Vty.update vt pic
     eventLoop position offset2 items vt
 
-eventLoop :: Int -> Int -> [String] -> Vty.Vty -> IO (Vty.Vty, Int)
+eventLoop :: Int -> Int -> [String] -> Vty.Vty -> IO (Vty.Vty, Maybe Int)
 eventLoop position offset items vt = do
     ev <- Vty.next_event vt
     case ev of
      Vty.EvKey key _ -> handleKeyboard key position offset items vt
      _ -> eventLoop position offset items vt
 
-displayMenu :: [String] -> IO String
+displayMenu :: [String] -> IO (Maybe String)
 displayMenu items = do
  vty <- allocate
- (vty',pos) <- work 0 0 items vty
+ (vty',maybePos) <- work 0 0 items vty
  deallocate vty'
- return $ items !! pos
+ case maybePos of
+  Just pos -> return $ Just $ items !! pos
+  Nothing -> return Nothing
 
 --main = do
 -- choice <- displayMenu ["Hi","Bye","The other thing."]
