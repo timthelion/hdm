@@ -50,6 +50,7 @@ When you sellect one of them, it symlinks that file to ~/.xinitrc.d/current, and
 >import System.Directory
 >import System.Process
 >import System.Posix.User
+>import System.Posix.Process
 >import Menu
 
 >help :: String
@@ -67,6 +68,12 @@ When you sellect one of them, it symlinks that file to ~/.xinitrc.d/current, and
 > \ or simply call\n\n\
 > \\
 > \ $ hdm\n\n\
+> \\
+> \If you are running from a tty, you may want:\n\n\
+> \ $ exec hdm\n\n\
+> \instead, as this will improve security by not allowing\
+> \someone to simply Ctrl-D your xsession and thuswise gain\
+> \terminal access\n\n\
 > \\
 > \ for an ncurses based menu.\n\n\
 > \ please note! You cannot run hdm if you already have a\
@@ -153,7 +160,7 @@ Otherwise, we screem bloody murder, and print out a help message.
 > lnProc<-runProcess "ln" ["-s",xinitrcDir++session,xinitrcDir++"current"] Nothing Nothing Nothing Nothing Nothing
 > waitForProcess lnProc
 > putStrLn "Starting x"
-> runProcess "startx" [] Nothing Nothing Nothing Nothing Nothing
+> executeFile "startx" True [] Nothing
 > return ()
 
 >startSessionSellector :: IO()
