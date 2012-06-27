@@ -12,4 +12,4 @@ cabal-version: >= 1.2
 Executable hdm
  build-depends:base,vty,unix,process,directory
  Main-is: hdm.lhs
- ghc-options: -XDoAndIfThenElse
+ extensions: DoAndIfThenElse
