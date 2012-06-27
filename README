@@ -2,7 +2,8 @@ To read about this app and how it works, see the hdm.lhs file.
 
 To install:
 
-$runhaskell Setup.lhs configure --prefix=$HOME --user
-$runhaskell Setup.lhs build
-$runhaskell Setup.lhs install
+$git clone git://github.com/timthelion/hdm.git
+$cabal configure
+$cabal build
+$cabal install
 

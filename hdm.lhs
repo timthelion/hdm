@@ -65,18 +65,18 @@ When you sellect one of them, it symlinks that file to ~/.xinitrc.d/current, and
 > \\
 > \ $ hdm xmonad\n\n\
 > \\
-> \ or simply call\n\n\
+> \ Or simply call\n\n\
 > \\
 > \ $ hdm\n\n\
 > \\
-> \If you are running from a tty, you may want:\n\n\
+> \ for an ncurses like terminal menu.\n\n\
+> \ If you are running from a tty, you may want:\n\n\
 > \ $ exec hdm\n\n\
-> \instead, as this will improve security by not allowing\
-> \someone to simply Ctrl-D your xsession and thuswise gain\
-> \terminal access\n\n\
+> \ instead, as this will improve security by not allowing\
+> \ someone to simply Ctrl-D your xsession and thuswise gain\
+> \ terminal access\n\n\
 > \\
-> \ for an ncurses based menu.\n\n\
-> \ please note! You cannot run hdm if you already have a\
+> \ Please note! You cannot run hdm if you already have a\
 > \ .xinitrc file!\
 > \ You must place all files you want to use in the place\
 > \ of xinitrc in your ~/.xinitrc.d/ directory!\n\n\
