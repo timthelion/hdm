@@ -43,6 +43,8 @@ It then shows a terminal based(Vty) menu with the different files in the ~/.xini
 
 When you sellect one of them, it symlinks that file to ~/.xinitrc.d/current, and runs startx.
 
+I typically run multiple x sessions at once.  One main xsession with xmonad, and then perhaps xfce4 or gnome-shell for when I need to program my arduino(java (cr)app) or I want to use a compositing effect like the magnifier...
+
 >module Main where
 
 >import System.Exit
