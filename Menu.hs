@@ -1,7 +1,39 @@
 {-
+GPLV3.0 or later copyright brmlab.cz contact timothyhobbs@seznam.cz
+
+Also copyright cheater http://cheater.posterous.com/haskell-curses
+
+Copyright 2012.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+This is a simple library for displaying a menu in a terminal.  It's main function is displayMenu which takes a list of strings and presents them as options to the user, and returns the string that the user selects...
+ 
 This code was written by cheater__ and published here:
 http://cheater.posterous.com/haskell-curses
-I am still waiting to get permision to republish it under the GPL...
+
+18:53 < cheater_> hi timthelion
+18:54 < timthelion> cheater_: hi!
+18:54 < timthelion> cheater_: Did you get my message?
+18:54 < cheater_> i think so
+18:54 < cheater_> you had some code you wanted to use right?
+18:54 < timthelion> Yes.
+18:54 < cheater_> what license do you want to release it under?
+18:55 < timthelion> GPL 3.0.
+18:55 < cheater_> ok, that's fine with me
+18:55 < timthelion> thank you :)
+
 -}
 
 module Menu where
